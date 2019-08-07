@@ -1,0 +1,19 @@
+{
+  "name": "llu-api",
+  "version": "1.0.0",
+  "description": "LLU API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/james-w-balcomb/llu-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/james-w-balcomb/llu-api/issues"
+  },
+  "homepage": "https://github.com/james-w-balcomb/llu-api#readme"
+}
