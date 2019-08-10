@@ -5,6 +5,8 @@
 const express = require('express');
 // Import Body Parser Middleware
 const bodyParser = require('body-parser');
+// Import CORS (Cross-Origin Resource Sharing)
+var cors = require('cors');
 // Import Mongoose
 const mongoose = require('mongoose');
 /*
@@ -50,12 +52,7 @@ mongoose.connect(
 /*
     Allow Cross-Domain
  */
-// TODO(JamesBalcomb): switch to CORS middleware
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+app.use(cors());
 
 /*
     Set default API response
