@@ -10,8 +10,6 @@ const mongoose = require('mongoose');
 /*
    Custom Imports
 */
-// Import routes
-let routes = require("./routes");
 
 /*
     Define CONSTANTS
@@ -27,8 +25,6 @@ console.log('LLU_MONGODB_URI: %s', LLU_MONGODB_URI);
     Initialize the Application
 */
 const app = express();
-// Use Api routes in the App
-app.use('/', routes);
 
 /*
    Configure Body Parser
@@ -65,6 +61,12 @@ app.use(function(req, res, next) {
     Set default API response
 */
 app.get('/', (req, res) => { res.send('hello, world') });
+
+// Import routes
+let routes = require("./routes");
+
+// Use Api routes in the App
+app.use('/', routes);
 
 /*
     Launch the Application
