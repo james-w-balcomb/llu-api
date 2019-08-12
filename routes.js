@@ -22,6 +22,8 @@ router.get('/contentIdList', controllers.retrieveDocumentIDsList);
 router.get('/contentPageTitleList', controllers.retrieveContentPageTitleList);
 // Retrieve ALL Document's contentPagePathList
 router.get('/contentPagePathList', controllers.retrieveContentPagePathList);
+// Retrieve ALL Document's contentPagePath and contentPageTitle
+router.get('/page-path-and-title-list', controllers.retrieveContentPagePathAndTitleList);
 
 // Export API routes
 module.exports = router;
