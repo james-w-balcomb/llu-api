@@ -67,10 +67,7 @@ exports.updateDocument = (req, res) => {
     console.log("updateDocument");
     console.log(req.body);
     // Find note and update it with the request body
-    ContentSchemaModel.findByIdAndUpdate(req.params.documentId, {
-        contentPageTitle: req.body.contentPageTitle || "Untitled Document",
-        contentContent: req.body.contentContent
-    }, {new: true})
+    ContentSchemaModel.findByIdAndUpdate(req.params.documentId, req.body, {new: true})
         .then(note => {
             if(!note) {
                 return res.status(404).send({
