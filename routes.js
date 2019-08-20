@@ -11,6 +11,8 @@ router.post('/content', controllers.createDocument);
 router.get('/content', controllers.retrieveAllDocuments);
 // Retrieve ONE Documents
 router.get('/content/:documentId', controllers.retrieveOneDocument);
+// Retrieve ONE Document by Page-Path
+router.get('/content/page-path/:contentPagePath', controllers.retrieveOneDocumentByPagePath);
 // (U) Update
 router.put('/content/:documentId', controllers.updateDocument);
 // (D) Delete

@@ -62,6 +62,30 @@ exports.retrieveOneDocument = (req, res) => {
         });
     });
 };
+exports.retrieveOneDocumentByPagePath = (req, res) => {
+    console.log("retrieveOneDocumentByPagePath");
+    console.log(req.body);
+    let contentPagePath = req.params.contentPagePath;
+    console.log(contentPagePath);
+    ContentSchemaModel.findOne({"contentPagePath": contentPagePath})
+        .then(note => {
+            if(!note) {
+                return res.status(404).send({
+                    message: "Document not found with contentPagePath: " + req.params.contentPagePath
+                });
+            }
+            res.send(note);
+        }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Document not found with contentPagePath " + req.params.contentPagePath
+            });
+        }
+        return res.status(500).send({
+            message: "Error retrieving Document with contentPagePath " + req.params.contentPagePath
+        });
+    });
+};
 // (U) Update
 exports.updateDocument = (req, res) => {
     console.log("updateDocument");
