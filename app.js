@@ -12,6 +12,8 @@ const mongoose = require('mongoose');
 /*
    Custom Imports
 */
+// Import dotenv-flow, for .env.development and .env.production
+const dotEnvFlow = require('dotenv-flow').config();
 
 /*
     Define CONSTANTS
