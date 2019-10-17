@@ -1,5 +1,6 @@
 
 const controllers = require('./controllers.js');
+const sethernetTableController = require('./sethernetTableController.js');
 
 // Initialize express router
 let router = require('express').Router();
@@ -26,6 +27,12 @@ router.get('/contentPageTitleList', controllers.retrieveContentPageTitleList);
 router.get('/contentPagePathList', controllers.retrieveContentPagePathList);
 // Retrieve ALL Document's contentPagePath and contentPageTitle
 router.get('/page-path-and-title-list', controllers.retrieveContentPagePathAndTitleList);
+
+router.get('/api/tables', sethernetTableController.getTables);
+router.get('/api/tables/:id', sethernetTableController.getSingleTable);
+router.post('/api/tables', sethernetTableController.addTable);
+router.put('/api/tables/:id', sethernetTableController.updateTable);
+router.delete('/api/tables/:id', sethernetTableController.deleteTable);
 
 // Export API routes
 module.exports = router;
