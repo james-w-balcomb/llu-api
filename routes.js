@@ -26,6 +26,8 @@ router.get('/contentPageTitleList', controllers.retrieveContentPageTitleList);
 router.get('/contentPagePathList', controllers.retrieveContentPagePathList);
 // Retrieve ALL Document's contentPagePath and contentPageTitle
 router.get('/page-path-and-title-list', controllers.retrieveContentPagePathAndTitleList);
+// Retrieve ALL Document's contentPagePath, contentPageTitle, and contentPageDescription
+router.get('/page-path-title-description-list', controllers.retrieveContentPagePathTitleDescriptionList);
 
 router.get('/api/tables', controllers.getTables);
 router.get('/api/tables/:id', controllers.getSingleTable);

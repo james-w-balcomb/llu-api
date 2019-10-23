@@ -172,6 +172,14 @@ exports.retrieveContentPagePathAndTitleList = (req, res) => {
         .then(documents => {res.send(documents);})
         .catch(err => {res.status(500).send({message: err.message || "An Unknown Error occurred while retrieving Contents."});});
 };
+// Array of all MongoDB Document's contentPagePath, contentPageTitle, and contentPageDescription
+exports.retrieveContentPagePathTitleDescriptionList = (req, res) => {
+    console.log('retrieveContentPagePathTitleDescriptionList');
+    console.log(req.body);
+    ContentSchemaModel.find({ }, { _id: 0, contentPagePath: 1, contentPageTitle: 1, contentPageDescription: 1 })
+        .then(documents => {res.send(documents);})
+        .catch(err => {res.status(500).send({message: err.message || "An Unknown Error occurred while retrieving Contents."});});
+};
 
 // Get all tables
 exports.getTables = async (req, res) => {
