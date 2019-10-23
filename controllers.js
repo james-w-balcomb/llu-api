@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // TODO(JamesBalcomb): figure out how to make 'documentId' not be "Unresolved variable..."
 
 const ContentSchemaModel = require('./models.js');
+const TableSchemaModel = require('./models.js');
 
 // (C) Create
 exports.createDocument = (req, res) => {
@@ -170,4 +171,71 @@ exports.retrieveContentPagePathAndTitleList = (req, res) => {
     ContentSchemaModel.find({ }, { _id: 0, contentPagePath: 1, contentPageTitle: 1 })
         .then(documents => {res.send(documents);})
         .catch(err => {res.status(500).send({message: err.message || "An Unknown Error occurred while retrieving Contents."});});
+};
+
+// Get all tables
+exports.getTables = async (req, res) => {
+    console.log('getTables);');
+    console.log(req.body);
+    try {
+        const tables = await TableSchemaModel.find();
+        console.log(tables);
+        res.send(tables)
+    } catch (err) {
+        res.status(500).send({message: err.message || "An Unknown Error occurred while retrieving Tables."});
+    }
+};
+
+// Get single table by ID
+exports.getSingleTable = async (req, res) => {
+    console.log('getSingleTable);');
+    console.log(req.body);
+    try {
+        const id = req.params.id;
+        const table = await TableSchemaModel.findById(id);
+        res.send(table)
+    } catch (err) {
+        res.status(500).send({message: err.message || "An Unknown Error occurred while retrieving Table."});
+    }
+};
+
+// Add a new table
+exports.addTable = async (req, res) => {
+    console.log('addTable);');
+    console.log(req.body);
+    try {
+        const table = new TableSchemaModel(req.body);
+        table.save();
+        res.send(table)
+    } catch (err) {
+        res.status(500).send({message: err.message || "An Unknown Error occurred while adding Table."});
+    }
+};
+
+// Update an existing table
+exports.updateTable = async (req, res) => {
+    console.log('updateTable);');
+    console.log(req.body);
+    try {
+        const id = req.params.id;
+        const table = req.body;
+        const { ...updateData } = table;
+        const update = await TableSchemaModel.findByIdAndUpdate(id, updateData, { new: true });
+        res.send(update)
+    } catch (err) {
+        res.status(500).send({message: err.message || "An Unknown Error occurred while updating Table."});
+    }
+};
+
+// Delete a table
+exports.deleteTable = async (req, res) => {
+    console.log('deleteTable);');
+    console.log(req.body);
+    try {
+        const id = req.params.id;
+        const table = await TableSchemaModel.findByIdAndRemove(id);
+        res.send(table)
+    } catch (err) {
+        res.status(500).send({message: err.message || "An Unknown Error occurred while deleting Table."});
+    }
 };
