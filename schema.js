@@ -37,5 +37,4 @@ const TableSchema = new mongoose.Schema(
     }
 );
 
-module.exports = ContentSchema;
-module.exports = TableSchema;
+module.exports = { ContentSchema, TableSchema };

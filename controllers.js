@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 // TODO(JamesBalcomb): figure how to not need mongoose import for mongoose.Types.ObjectId(req.params.documentId)
 // TODO(JamesBalcomb): figure out how to make 'documentId' not be "Unresolved variable..."
 
-const ContentSchemaModel = require('./models.js');
-const TableSchemaModel = require('./models.js');
+const { ContentSchemaModel } = require('./models.js');
+const { TableSchemaModel } = require('./models.js');
 
 // (C) Create
 exports.createDocument = (req, res) => {
