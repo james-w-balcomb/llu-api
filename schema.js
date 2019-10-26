@@ -17,7 +17,7 @@ const ContentSchema = new mongoose.Schema(
             contentDatePublished: String,
             contentDateRedacted: String,
             contentDateDeleted: String,
-            contentContent: { type: String, required: true },
+            contentContent: { type: Object, required: true },
             contentDate: { type: Date, default: Date.now },
             isDeleted: String
     },
