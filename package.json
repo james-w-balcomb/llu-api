@@ -4,7 +4,9 @@
   "description": "LLU API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env-shell NODE_ENV=test mocha",
+    "pretest": "echo I run before test",
+    "posttest": "echo I run after test"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/james-w-balcomb/llu-api#readme",
   "dependencies": {
+    "async": "^3.1.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv-flow": "^3.1.0",
@@ -25,6 +28,11 @@
     "mongoose": "^5.6.8"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "mocha": "^6.2.2",
     "nodemon": "^1.19.1"
   }
 }
