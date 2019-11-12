@@ -107,13 +107,13 @@ exports.updateDocument = (req, res) => {
             });
         }
         return res.status(500).send({
-            message: "Error updating Document with ID: " + req.params.documentId + " [err(" + err.kind + "): " + err + ""
+            message: "Document not found with ID: " + req.params.documentId
         });
     });
 };
 // (D) Delete
 exports.deleteDocument = (req, res) => {
-    console.log("deleteDocument");
+    console.log("updateDocument");
     console.log(req.body);
 
     ContentSchemaModel.findByIdAndRemove(req.params.documentId)
