@@ -107,6 +107,7 @@ exports.updateDocument = (req, res) => {
             });
         }
         return res.status(500).send({
+            // message: "Error updating Document with ID: " + req.params.documentId
             message: "Error updating Document with ID: " + req.params.documentId + " [err(" + err.kind + "): " + err + ""
         });
     });
