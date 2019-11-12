@@ -113,6 +113,7 @@ exports.updateDocument = (req, res) => {
 };
 // (D) Delete
 exports.deleteDocument = (req, res) => {
+    // console.log("updateDocument");
     console.log("deleteDocument");
     console.log(req.body);
 
