@@ -19,21 +19,21 @@ router.put('/content/:documentId', controllers.updateDocument);
 router.delete('/content/:documentId', controllers.deleteDocument);
 
 // Retrieve ALL Document's ID
-router.get('/contentIdList', controllers.retrieveDocumentIDsList);
+router.get('/content-id-list', controllers.retrieveDocumentIDsList);
 // Retrieve ALL Document's contentPageTitleList
-router.get('/contentPageTitleList', controllers.retrieveContentPageTitleList);
+router.get('/content-page-title-list', controllers.retrieveContentPageTitleList);
 // Retrieve ALL Document's contentPagePathList
-router.get('/contentPagePathList', controllers.retrieveContentPagePathList);
+router.get('/content-page-path-list', controllers.retrieveContentPagePathList);
 // Retrieve ALL Document's contentPagePath and contentPageTitle
 router.get('/page-path-and-title-list', controllers.retrieveContentPagePathAndTitleList);
 // Retrieve ALL Document's contentPagePath, contentPageTitle, and contentPageDescription
 router.get('/page-path-title-description-list', controllers.retrieveContentPagePathTitleDescriptionList);
 
-router.get('/api/tables', controllers.getTables);
-router.get('/api/tables/:id', controllers.getSingleTable);
-router.post('/api/tables', controllers.addTable);
-router.put('/api/tables/:id', controllers.updateTable);
-router.delete('/api/tables/:id', controllers.deleteTable);
+router.get('/tables', controllers.getTables);
+router.get('/tables/:id', controllers.getSingleTable);
+router.post('/tables', controllers.addTable);
+router.put('/tables/:id', controllers.updateTable);
+router.delete('/tables/:id', controllers.deleteTable);
 
 // Export API routes
 module.exports = router;

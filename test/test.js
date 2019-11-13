@@ -48,67 +48,65 @@ describe("API", function() {
 
     describe("/", function() {
 
-        // app.get('/', (req, res) => { res.send('hello, world') });
-        describe('GET /', function() {
-            it('it should return status 200', function(done) {
+        describe('GET /', function () {
+            it('it should return status 200', function (done) {
                 chai.request(app)
                     .get('/')
-                    .end(function(err, res) {
+                    .end(function (err, res) {
                         res.should.have.status(200);
                         done();
                     });
             });
         });
 
-        // router.get('/contentIdList', controllers.retrieveDocumentIDsList);
-        describe('GET /contentIdList', function() {
+    });
+
+    describe("/api/v1/", function() {
+
+        describe('GET /api/v1/content-id-list', function() {
             it('it should return status 200', function(done) {
                 chai.request(app)
-                    .get('/contentIdList')
+                    .get('/api/v1/content-id-list')
                     .end(function(err, res) {
                         res.should.have.status(200);done();
                     });
             });
         });
 
-        // router.get('/contentPageTitleList', controllers.retrieveContentPageTitleList);
-        describe('GET /contentPageTitleList', function() {
+        describe('GET /api/v1/content-page-title-list', function() {
             it('it should return status 200', function(done) {
                 chai.request(app)
-                    .get('/contentPageTitleList')
+                    .get('/api/v1/content-page-title-list')
                     .end(function(err, res) {
                         res.should.have.status(200);done();
                     });
             });
         });
 
-        // router.get('/contentPagePathList', controllers.retrieveContentPagePathList);
-        describe('GET /contentPagePathList', function() {
+        describe('GET /api/v1/content-page-path-list', function() {
             it('it should return status 200', function(done) {
                 chai.request(app)
-                    .get('/contentPagePathList')
+                    .get('/api/v1/content-page-path-list')
                     .end(function(err, res) {
                         res.should.have.status(200);done();
                     });
             });
         });
 
-        // router.get('/page-path-and-title-list', controllers.retrieveContentPagePathAndTitleList);
-        describe('GET /page-path-and-title-list', function() {
+        describe('GET /api/v1/page-path-and-title-list', function() {
             it('it should return status 200', function(done) {
                 chai.request(app)
-                    .get('/page-path-and-title-list')
+                    .get('/api/v1/page-path-and-title-list')
                     .end(function(err, res) {
                         res.should.have.status(200);done();
                     });
             });
         });
 
-        // router.get('/page-path-title-description-list', controllers.retrieveContentPagePathTitleDescriptionList);
-        describe('GET /page-path-title-description-list', function() {
+        describe('GET /api/v1/page-path-title-description-list', function() {
             it('it should return status 200', function(done) {
                 chai.request(app)
-                    .get('/page-path-title-description-list')
+                    .get('/api/v1/page-path-title-description-list')
                     .end(function(err, res) {
                         res.should.have.status(200);done();
                     });
@@ -117,7 +115,7 @@ describe("API", function() {
 
     });
 
-    describe("/content", function() {
+    describe("/api/v1/content", function() {
 
         // Before running this test suite, empty the database
         before((done) => {
@@ -132,16 +130,15 @@ describe("API", function() {
         //     });
         // });
 
-        // router.post('/content', controllers.createDocument);
-        describe('POST /content', function() {
+        describe('POST /api/v1/content', function() {
             it('it should return status 200', function(done) {
                 let contentDocument = {
                     contentPagePath: "test-post-content",
-                    contentPageTitle: "Test POST /content",
+                    contentPageTitle: "Test POST /api/v1/content",
                     contentContent: {}
                 };
                 chai.request(app)
-                    .post('/content')
+                    .post('/api/v1/content')
                     .send(contentDocument)
                     .end(function(err, res) {
                         console.log(res.error);
@@ -152,28 +149,26 @@ describe("API", function() {
             it('should return status ')
         });
 
-        // router.get('/content', controllers.retrieveAllDocuments);
-        describe('GET /content', function() {
+        describe('GET /api/v1/content', function() {
             it('it should return status 200', function(done) {
                 chai.request(app)
-                    .get('/content')
+                    .get('/api/v1/content')
                     .end(function(err, res) {
                         res.should.have.status(200);done();
                     });
             });
         });
 
-        // router.get('/content/:documentId', controllers.retrieveOneDocument);
-        describe('GET /content/:documentId', function() {
+        describe('GET /api/v1/content/:documentId', function() {
             it('it should return status 200', function(done) {
                 let contentDocument = new ContentSchemaModel({
                     contentPagePath: "test-get-content-documentId",
-                    contentPageTitle: "Test GET /content/:documentId",
+                    contentPageTitle: "Test GET /api/v1/content/:documentId",
                     contentContent: {}
                 });
                 contentDocument.save(function(err, contentDocument) {
                     chai.request(app)
-                        .get(`/content/${contentDocument.id}`)
+                        .get(`/api/v1/content/${contentDocument.id}`)
                         .end(function(err, res) {
                             res.should.have.status(200);done();
                         });
@@ -182,17 +177,16 @@ describe("API", function() {
             it('it should return status 404 Document not found with ID: {_id}')
         });
 
-        // router.get('/content/page-path/:contentPagePath', controllers.retrieveOneDocumentByPagePath);
-        describe('GET /content/page-path/:contentPagePath', function() {
+        describe('GET /api/v1/content/page-path/:contentPagePath', function() {
             it('it should return status 200', function(done) {
                 let contentDocument = new ContentSchemaModel({
                     contentPagePath: "test-get-contentPagePath",
-                    contentPageTitle: "Test GET /content/page-path/:contentPagePath",
+                    contentPageTitle: "Test GET /api/v1/content/page-path/:contentPagePath",
                     contentContent: {}
                 });
                 contentDocument.save(function(err, contentDocument) {
                     chai.request(app)
-                        .get(`/content/page-path/${contentDocument.contentPagePath}`)
+                        .get(`/api/v1/content/page-path/${contentDocument.contentPagePath}`)
                         .end(function(err, res) {
                             res.should.have.status(200);done();
                         });
@@ -201,20 +195,19 @@ describe("API", function() {
             it('it should return status 404 Document not found with Page-Path: {contentPagePath}')
         });
 
-        // router.put('/content/:documentId', controllers.updateDocument);
-        describe('PUT /content/:documentId', function() {
+        describe('PUT /api/v1/content/:documentId', function() {
             it('it should return status 200', function(done) {
                 let contentDocument = new ContentSchemaModel({
                     contentPagePath: "test-put-content-documentId",
-                    contentPageTitle: "Test PUT /content/:documentId",
+                    contentPageTitle: "Test PUT /api/v1/content/:documentId",
                     contentContent: {}
                 });
                 contentDocument.save(function(err, contentDocument) {
                     let contentDocumentUpdate = {
-                        contentPageTitle: "UPDATED!! Test PUT /content/:documentId"
+                        contentPageTitle: "UPDATED!! Test PUT /api/v1/content/:documentId"
                     };
                     chai.request(app)
-                        .put(`/content/${contentDocument.id}`)
+                        .put(`/api/v1/content/${contentDocument.id}`)
                         .send(contentDocumentUpdate)
                         .end(function(err, res) {
                             console.log(res.error);
@@ -225,17 +218,16 @@ describe("API", function() {
             it('it should return status 404 Document not found with ID: {_id}')
         });
 
-        // router.delete('/content/:documentId', controllers.deleteDocument);
-        describe('DELETE /content/:documentId', function() {
+        describe('DELETE /api/v1/content/:documentId', function() {
             it('it should return status 200', function(done) {
                 let contentDocument = new ContentSchemaModel({
                     contentPagePath: "test-delete-content-documentId",
-                    contentPageTitle: "DELETE /content/:documentId",
+                    contentPageTitle: "DELETE /api/v1/content/:documentId",
                     contentContent: {}
                 });
                 contentDocument.save(function(err, contentDocument) {
                     chai.request(app)
-                        .delete(`/content/${contentDocument.id}`)
+                        .delete(`/api/v1/content/${contentDocument.id}`)
                         .end(function(err, res) {
                             console.log(res.error);
                             res.should.have.status(200);done();
@@ -247,7 +239,7 @@ describe("API", function() {
 
     });
 
-    describe("/api/tables", function() {
+    describe("/api/v1/tables", function() {
 
         // Before running this test suite, empty the database
         before((done) => {
@@ -262,28 +254,26 @@ describe("API", function() {
         //     });
         // });
 
-        // router.get('/api/tables', controllers.getTables);
-        describe('GET /api/tables', function() {
+        describe('GET /api/v1/tables', function() {
             it('it should return status 200', function(done) {
                 chai.request(app)
-                    .get('/api/tables')
+                    .get('/api/v1/tables')
                     .end(function(err, res) {
                         res.should.have.status(200);done();
                     });
             });
         });
 
-        // router.get('/api/tables/:id', controllers.getSingleTable);
-        describe('GET /api/tables/:id', function() {
+        describe('GET /api/v1/tables/:id', function() {
             it('it should return status 200', function(done) {
                 let tableDocument = new TableSchemaModel({
-                    title: "Test GET /api/tables/:id",
+                    title: "Test GET /api/v1/tables/:id",
                     description: "",
                     content: []
                 });
                 tableDocument.save(function(err, tableDocument) {
                     chai.request(app)
-                        .get(`/api/tables/${tableDocument.id}`)
+                        .get(`/api/v1/tables/${tableDocument.id}`)
                         .end(function(err, res) {
                             res.should.have.status(200);done();
                         });
@@ -292,16 +282,15 @@ describe("API", function() {
             it('it should return status 404 Document not found with ID: {_id}')
         });
 
-        // router.post('/api/tables', controllers.addTable);
-        describe('POST /api/tables', function() {
+        describe('POST /api/v1/tables', function() {
             let table = {
-                title: "Test POST /api/tables",
+                title: "Test POST /api/v1/tables",
                 description: "",
                 content: []
             };
             it('it should return status 200', function(done) {
                 chai.request(app)
-                    .post('/api/tables')
+                    .post('/api/v1/tables')
                     .send(table)
                     .end(function(err, res) {
                         console.log(res.error);
@@ -310,11 +299,10 @@ describe("API", function() {
             });
         });
 
-        // router.put('/api/tables/:id', controllers.updateTable);
-        describe('PUT /api/tables/:id', function() {
+        describe('PUT /api/v1/tables/:id', function() {
             it('it should return status 200', function(done) {
                 let tableDocument = new TableSchemaModel({
-                    title: "Test PUT /api/tables/:id",
+                    title: "Test PUT /api/v1/tables/:id",
                     description: "",
                     content: []
                 });
@@ -323,7 +311,7 @@ describe("API", function() {
                         description: "UPDATED!!",
                     };
                     chai.request(app)
-                        .put(`/api/tables/${tableDocument.id}`)
+                        .put(`/api/v1/tables/${tableDocument.id}`)
                         .send(tableDocumentUpdate)
                         .end(function(err, res) {
                             console.log(res.error);
@@ -334,17 +322,16 @@ describe("API", function() {
             it('it should return status 404 Document not found with ID: {_id}')
         });
 
-        // router.delete('/api/tables/:id', controllers.deleteTable);
-        describe('DELETE /api/tables/:id', function() {
+        describe('DELETE /api/v1/tables/:id', function() {
             it('it should return status 200', function(done) {
                 let tableDocument = new TableSchemaModel({
-                    title: "Test DELETE /api/tables/:id",
+                    title: "Test DELETE /api/v1/tables/:id",
                     description: "",
                     content: []
                 });
                 tableDocument.save(function(err, tableDocument) {
                     chai.request(app)
-                        .delete(`/api/tables/${tableDocument.id}`)
+                        .delete(`/api/v1/tables/${tableDocument.id}`)
                         .end(function(err, res) {
                             console.log(res.error);
                             res.should.have.status(200);done();

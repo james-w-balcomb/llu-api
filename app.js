@@ -65,7 +65,7 @@ app.get('/', (req, res) => { res.send('hello, world') });
 let routes = require("./routes");
 
 // Use Api routes in the App
-app.use('/', routes);
+app.use('/api/v1', routes);
 
 /*
     Launch the Application
