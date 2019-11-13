@@ -6,7 +6,7 @@ const express = require('express');
 // Import Body Parser Middleware
 const bodyParser = require('body-parser');
 // Import CORS (Cross-Origin Resource Sharing)
-var cors = require('cors');
+const cors = require('cors');
 // Import Mongoose
 const mongoose = require('mongoose');
 /*
